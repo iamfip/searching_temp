@@ -10,18 +10,17 @@ const searchTemperature= () => {
     
     fetch(url).then(res => res.json())
     .then( data => displayTemperature(data));
-    city="",
- 
-   
 }
+   
+
 
 const displayTemperature = temperature => {
-
-    setInnerText( 'city', temperature.name);
     console.log(temperature);
+    setInnerText( 'city', temperature.name);
+    console.log(temperature.weather[0].main);
     setInnerText( 'temperature', temperature.main.temp);
-    setInnerText('condition', temperature.weather[0].main);
-
+    setInnerText('weather-condition', temperature.weather[0].main);
+    
     // set weather icon
     const url= `https://openweathermap.org/img/wn/${temperature.weather[0].icon}@2x.png`;
     const imgIcon= document.getElementById("weather-icon");
